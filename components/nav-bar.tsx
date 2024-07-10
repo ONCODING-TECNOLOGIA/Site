@@ -5,6 +5,8 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useRef } from "react";
 
+gsap.registerPlugin(useGSAP);
+
 export default function NavBar() {
   const scope = useRef(null);
   useGSAP(
@@ -14,7 +16,7 @@ export default function NavBar() {
         ".logo, li, button",
         {
           y: -50,
-          delay: 2,
+          delay: 4,
           duration: 1,
           opacity: 0,
           stagger: 0.2,

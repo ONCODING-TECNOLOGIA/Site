@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Section1() {
   return (
-    <div className="flex size-full items-center justify-center text-white">
+    <div className="container flex items-center justify-center text-white">
       Deserunt ipsum incididunt magna sunt reprehenderit exercitation dolor qui
       commodo esse duis velit nostrud. Eu tempor et sit qui. Officia et aute eu
       nostrud ipsum. Laboris Lorem labore aute mollit. Deserunt qui enim ex id

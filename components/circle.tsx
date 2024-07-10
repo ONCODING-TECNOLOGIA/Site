@@ -1,14 +1,37 @@
-import React from "react";
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import React, { useRef } from "react";
+gsap.registerPlugin(useGSAP);
 
 export default function Circle({ className }: { className?: string }) {
+  const scope = useRef(null);
+  useGSAP(
+    () => {
+      gsap.to(scope.current, {
+        opacity: 1,
+        delay: 3,
+        duration: 2,
+        ease: "power1.inOut",
+      });
+      gsap.to(scope.current, {
+        repeat: -1,
+        ease: "none",
+        rotate: 360,
+        duration: 500,
+      });
+    },
+    { scope: scope },
+  );
   return (
     <svg
       width="1145"
       height="1024"
       viewBox="0 0 1145 1024"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      ref={scope}
     >
       <path
         fill-rule="evenodd"

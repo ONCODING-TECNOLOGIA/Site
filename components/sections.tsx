@@ -3,39 +3,47 @@ import React, { useRef } from "react";
 import Section1 from "./section1";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Sections({ className }: { className: string }) {
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
+
+export default function Sections() {
   const scope = useRef(null);
   useGSAP(
     () => {
-      let sections = gsap.utils.toArray<HTMLElement>(".section");
       const tl = gsap.timeline({
+        defaults: { duration: 10 },
         scrollTrigger: {
           trigger: scope.current,
           scrub: true,
           pin: true,
-          snap: 1 / (sections.length - 1),
+          snap: "labels",
         },
       });
 
-      tl.from(sections[1], { duration: 3, opacity: 0, xPercent: 100 })
-        .from(sections[2], { duration: 3, opacity: 0, yPercent: 100 })
-        .from(sections[3], { duration: 3, opacity: 0, xPercent: -100 });
+      tl.addLabel("section1")
+        .from(".section2", { xPercent: 100 })
+        .addLabel("section2")
+        .from(".section3", { yPercent: 100 })
+        .addLabel("section3")
+        .from(".section4", { xPercent: -100 })
+        .addLabel("section4");
     },
     { scope: scope },
   );
   return (
-    <div ref={scope} className="size-full">
-      <div className="section z-20 flex size-full items-center justify-center bg-blue">
+    <div ref={scope} className="relative h-screen w-full">
+      <div className="section1 flex size-full items-center justify-center bg-blue">
         <Section1 />
       </div>
-      <div className="section z-30 flex size-full items-center justify-center bg-green">
+      <div className="section2 absolute top-0 flex size-full items-center justify-center bg-green">
         <Section1 />
       </div>
-      <div className="section z-40 flex size-full items-center justify-center bg-yellow">
+      <div className="section3 absolute top-0 flex size-full items-center justify-center bg-yellow">
         <Section1 />
       </div>
-      <div className="section z-50 flex size-full items-center justify-center bg-red">
+      <div className="section4 absolute top-0 flex size-full items-center justify-center bg-red">
         <Section1 />
       </div>
     </div>
