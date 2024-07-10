@@ -5,7 +5,6 @@ import CTAButton from "./cta-button";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
-import Circle from "./circle";
 
 export default function Hero() {
   const scope = useRef(null);
@@ -18,13 +17,8 @@ export default function Hero() {
         yoyo: true,
         repeat: -1,
       });
-      gsap.to(".circle", {
-        rotation: -360,
-        duration: 300,
-        repeat: -1,
-        ease: "none",
-      });
       gsap.from(".enter", {
+        delay: 2,
         x: -50,
         opacity: 0,
         duration: 1,
@@ -35,24 +29,23 @@ export default function Hero() {
     { scope: scope },
   );
   return (
-    <section className="relative h-screen overflow-hidden" ref={scope}>
-      <div className="container flex h-full flex-col justify-center gap-8 text-white">
-        <h1 className="enter flex gap-6 text-5xl font-bold">
-          ARTE E{" "}
-          <div className="text-bg bg-gradient-to-r from-green via-yellow to-green bg-[length:200%] bg-clip-text text-transparent">
+    <section className="h-screen w-full shrink-0" ref={scope}>
+      <div className="container flex h-full min-w-max flex-col items-start justify-center gap-8 text-white">
+        <h1 className="enter flex shrink-0 gap-6 text-5xl font-bold">
+          CRIATIVIDADE E{" "}
+          <div className="text-bg shrink-0 bg-gradient-to-r from-green via-yellow to-green bg-[length:200%] bg-clip-text text-transparent">
             TECNOLOGIA
           </div>
         </h1>
-        <h2 className="enter text-2xl">
-          {">>======> { Um aliado inovador para o sucesso }"}
+        <h2 className="enter shrink-0 text-2xl">
+          {">>======> { Seus novos aliados para o sucesso }"}
         </h2>
-        <span className="enter">
+        <span className="enter shrink-0">
           <CTAButton className="mt-10" title="Conheça nossos serviços">
             conheça nossos serviços <ArrowUpRight />
           </CTAButton>
         </span>
       </div>
-      {/* <Circle className="circle absolute -bottom-[25%] -right-[25%] scale-125 opacity-80" /> */}
     </section>
   );
 }

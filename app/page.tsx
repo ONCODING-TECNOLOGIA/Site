@@ -1,18 +1,13 @@
-import ContentWrapper from "@/components/content-wrapper";
 import Hero from "@/components/hero";
+import Intro from "@/components/intro";
 import NavBar from "@/components/nav-bar";
-import Section1 from "@/components/section1";
 
 export default function Home() {
   return (
-    <ContentWrapper
-      hero={
-        <>
-          <NavBar />
-          <Hero />
-        </>
-      }
-      section1={<Section1 />}
-    ></ContentWrapper>
+    <main className="relative scroll-smooth">
+      <Intro />
+      <NavBar />
+      <Hero />
+    </main>
   );
 }

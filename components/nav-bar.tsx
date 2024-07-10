@@ -12,6 +12,7 @@ export default function NavBar() {
       const tl = gsap.timeline();
       tl.from(".logo, li, button", {
         y: -50,
+        delay: 2,
         duration: 1,
         opacity: 0,
         stagger: 0.2,
