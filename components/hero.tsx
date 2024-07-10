@@ -10,6 +10,7 @@ export default function Hero() {
   const scope = useRef(null);
   useGSAP(
     () => {
+      gsap.to(scope.current, { opacity: 1, delay: 2 });
       gsap.to(".text-bg", {
         backgroundPositionX: -600,
         duration: 5,
@@ -29,7 +30,7 @@ export default function Hero() {
     { scope: scope },
   );
   return (
-    <section className="h-screen w-full shrink-0" ref={scope}>
+    <section className="h-screen w-full shrink-0 opacity-0" ref={scope}>
       <div className="container flex h-full min-w-max flex-col items-start justify-center gap-8 text-white">
         <h1 className="enter flex shrink-0 gap-6 text-5xl font-bold">
           CRIATIVIDADE E{" "}

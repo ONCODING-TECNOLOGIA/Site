@@ -10,21 +10,26 @@ export default function NavBar() {
   useGSAP(
     () => {
       const tl = gsap.timeline();
-      tl.from(".logo, li, button", {
-        y: -50,
-        delay: 2,
-        duration: 1,
-        opacity: 0,
-        stagger: 0.2,
-        ease: "power1.out",
-      });
+      tl.to(scope.current, { opacity: 1, delay: 2 }).from(
+        ".logo, li, button",
+        {
+          y: -50,
+          delay: 2,
+          duration: 1,
+          opacity: 0,
+          stagger: 0.2,
+          ease: "power1.out",
+        },
+        0,
+      );
     },
     { scope: scope },
   );
+
   return (
     <div
       ref={scope}
-      className="container sticky top-0 z-50 flex items-center justify-between py-4"
+      className="container sticky top-0 z-50 flex items-center justify-between py-4 opacity-0"
     >
       <div className="logo relative h-[22px] w-[145px]">
         <Image
