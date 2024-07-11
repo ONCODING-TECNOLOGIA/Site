@@ -27,6 +27,29 @@ export default function Hero() {
         stagger: 0.3,
         ease: "power1.inOut",
       });
+      gsap.to(".enter", {
+        scrollTrigger: {
+          trigger: scope.current,
+          scrub: 2,
+          start: "bottom 70%",
+          end: "bottom 90%",
+        },
+        opacity: 0,
+        x: 100,
+        stagger: 0.3,
+        ease: "power1.inOut",
+      });
+      gsap.to(".container", {
+        scrollTrigger: {
+          trigger: scope.current,
+          scrub: 2,
+          start: "bottom bottom",
+          end: "bottom top",
+        },
+        y: 300,
+        x: -200,
+        ease: "power1.inOut",
+      });
       gsap.from(".circle", {
         opacity: 0,
         delay: 4,
@@ -44,11 +67,12 @@ export default function Hero() {
   );
   return (
     <section
-      className="relative -m-[38px] h-screen w-full shrink-0 opacity-0"
+      className="relative h-screen w-full shrink-0 opacity-0"
       ref={scope}
     >
       <div className="container flex h-full min-w-max flex-col items-start justify-center gap-8 text-white">
-        <h1 className="enter flex shrink-0 translate-x-16 gap-6 text-5xl font-bold">
+        <div className="enter" />
+        <h1 className="enter flex translate-x-16 gap-6 text-5xl font-bold">
           CRIATIVIDADE E{" "}
           <div className="text-bg -mt-2 shrink-0 bg-gradient-to-r from-green via-yellow to-green bg-[length:200%] bg-clip-text text-8xl text-transparent">
             TECNOLOGIA

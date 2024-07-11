@@ -31,7 +31,7 @@ export default function NavBar() {
   return (
     <div
       ref={scope}
-      className="container sticky top-0 z-50 flex items-center justify-between py-4 opacity-0"
+      className="container fixed left-1/2 top-0 z-50 mx-auto flex origin-center -translate-x-1/2 items-center justify-between py-4 opacity-0"
     >
       <div className="logo relative h-[22px] w-[145px]">
         <Image

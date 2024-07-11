@@ -20,6 +20,16 @@ export default function Circle({ className }: { className?: string }) {
         rotate: 360,
         duration: 500,
       });
+      gsap.to(scope.current, {
+        scrollTrigger: {
+          trigger: scope.current,
+          scrub: 1,
+          start: "top top",
+          end: "bottom top",
+        },
+
+        y: 200,
+      });
     },
     { scope: scope },
   );
