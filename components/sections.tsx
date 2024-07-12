@@ -16,6 +16,7 @@ export default function Sections() {
         defaults: { duration: 10 },
         scrollTrigger: {
           trigger: scope.current,
+          end: "=+8000",
           scrub: true,
           pin: true,
           snap: "labels",
