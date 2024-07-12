@@ -4,9 +4,18 @@ import Section1 from "./section1";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Section2 from "./section2";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
+
+const sections = [
+  { sectionContent: <Section1 />, bg: "bg-blue" },
+  { sectionContent: <Section2 />, bg: "bg-green" },
+  { sectionContent: <Section1 />, bg: "bg-yellow" },
+  { sectionContent: <Section1 />, bg: "bg-red" },
+];
 
 export default function Sections() {
   const scope = useRef(null);
@@ -35,18 +44,18 @@ export default function Sections() {
   );
   return (
     <div ref={scope} className="relative h-screen w-full">
-      <div className="section1 flex size-full items-center justify-center bg-blue">
-        <Section1 />
-      </div>
-      <div className="section2 absolute top-0 flex size-full items-center justify-center bg-green">
-        <Section1 />
-      </div>
-      <div className="section3 absolute top-0 flex size-full items-center justify-center bg-yellow">
-        <Section1 />
-      </div>
-      <div className="section4 absolute top-0 flex size-full items-center justify-center bg-red">
-        <Section1 />
-      </div>
+      {sections.map(({ sectionContent, bg }, index) => (
+        <section
+          key={index}
+          className={cn(
+            "section" + (index + 1),
+            "absolute flex size-full items-center justify-center",
+            bg,
+          )}
+        >
+          {sectionContent}
+        </section>
+      ))}
     </div>
   );
 }
